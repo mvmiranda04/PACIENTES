@@ -63,6 +63,9 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:3.6.0"
     testRuntime "org.seleniumhq.selenium:selenium-remote-driver:3.6.0"
     testRuntime "org.seleniumhq.selenium:selenium-api:3.6.0"
+
+
+    runtime 'postgresql:postgresql:9.1-901.jdbc4'
 }
 
 bootRun {
