@@ -17,7 +17,7 @@
 					<ul class="dropdown-menu">
 						<li><g:link controller="monodrogas" >AMB Monodroga</g:link></li>
 						<li><g:link controller="medicamento" >AMB Medicamentos</g:link></li>
-						<li><g:link controller="medicamento" >AMB pruebitaa</g:link></li>
+						<li><g:link controller="medicamento" >AMB pruebitaa Marta</g:link></li>
 					</ul>
 				</li>
 				<li><a href="#">Acerca De</a></li>
