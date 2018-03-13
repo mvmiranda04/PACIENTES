@@ -21,6 +21,7 @@
                 <input type="text" class="form-control" name="apellido" placeholder="Apellido">
             </div>
                 <button type="submit" name="buscar" class="btn btn-default">Buscar</button>
+
         </g:form>
         <table>
 			<thead>
@@ -44,7 +45,7 @@
 				<g:each in="${pacienteInstanceList}" status="i" var="pacienteInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-						<td><g:link action="show" id="${pacienteInstance.id}">${fieldValue(bean: pacienteInstance, field: "tipo_docu")}</g:link></td>
+						<td><g:link controller="Paciente" action="show" id="${pacienteInstance.id}">${fieldValue(bean: pacienteInstance, field: "tipo_docu")}</g:link></td>
 
 						<td>${fieldValue(bean: pacienteInstance, field: "nro_docu")}</td>
 
@@ -60,6 +61,7 @@
 				</g:each>
 				</tbody>
 			</table>
+
 
     </body>
 </html>
