@@ -41,6 +41,9 @@
 					</tr>
 				</thead>
 				<tbody>
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
 				<g:each in="${pacienteInstanceList}" status="i" var="pacienteInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 

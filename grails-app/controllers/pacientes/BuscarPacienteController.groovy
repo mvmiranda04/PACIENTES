@@ -17,7 +17,8 @@ class BuscarPacienteController {
             if (paciente) {
                 redirect(controller: "paciente", action:"show", id: paciente.id)
             } else {
-                flash.error="No se encontro Paciente con el DNI ingresado."
+                flash.message="No se encontro Paciente con el DNI ingresado."
+                redirect(action:"index")
             }
         }
         if (params.apellido ) {
@@ -26,7 +27,8 @@ class BuscarPacienteController {
             if (pacienteInstance){
                 render(view:"buscar",model:[ pacienteInstanceList:pacienteInstance ])
             }else {
-                flash.error="No se encontro Paciente con el Apellido ingresado."
+                flash.message="No se encontro Paciente con el Apellido ingresado."
+                redirect(action:"index")
             }
 
         }
