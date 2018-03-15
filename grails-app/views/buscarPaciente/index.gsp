@@ -22,6 +22,12 @@
             </div>
                 <button type="submit" name="buscar" class="btn btn-default">Buscar</button>
         </g:form>
+
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
+
+        
         <table>
 			<thead>
 					<tr>
