@@ -18,6 +18,7 @@ class BuscarPacienteController {
                 redirect(controller: "paciente", action:"show", id: paciente.id)
             } else {
                 flash.message="No se encontro Paciente con el DNI ingresado."
+                redirect(action:"index")
             }
         }
         if (params.apellido ) {
@@ -27,7 +28,7 @@ class BuscarPacienteController {
                 render(view:"buscar",model:[ pacienteInstanceList:pacienteInstance ])
             }else {
                 flash.message="No se encontro Paciente con el Apellido ingresado."
-                redirect(action:index)
+                redirect(action:"index")
             }
 
         }
