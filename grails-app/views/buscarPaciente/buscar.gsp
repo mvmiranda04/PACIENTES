@@ -20,7 +20,10 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="apellido" placeholder="Apellido">
             </div>
-                <button type="submit" name="buscar" class="btn btn-default">Buscar</button>
+                <button type="submit" name="buscar" class="glyphicon glyphicon-search">Buscarrrrr</button>
+                <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
 
         </g:form>
         <table>
