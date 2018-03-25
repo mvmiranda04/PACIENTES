@@ -31,6 +31,94 @@
                 <fieldset class="form">
                     <f:all bean="paciente"/>
                 </fieldset>
+
+
+
+
+                <ol class="property-list consulta">
+
+          				<g:if test="${consultaInstance?.fecha_consulta}">
+          				<li class="fieldcontain">
+          					<span id="fecha_consulta-label" class="property-label"><g:message code="consulta.fecha_consulta.label" default="Fechaconsulta" /></span>
+
+          						<span class="property-value" aria-labelledby="fecha_consulta-label"><g:formatDate date="${consultaInstance?.fecha_consulta}" /></span>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.hora_consulta}">
+          				<li class="fieldcontain">
+          					<span id="hora_consulta-label" class="property-label"><g:message code="consulta.hora_consulta.label" default="Horaconsulta" /></span>
+
+          						<span class="property-value" aria-labelledby="hora_consulta-label"><g:fieldValue bean="${consultaInstance}" field="hora_consulta"/></span>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.diagnostico}">
+          				<li class="fieldcontain">
+          					<span id="diagnostico-label" class="property-label"><g:message code="consulta.diagnostico.label" default="Diagnostico" /></span>
+
+          						<span class="property-value" aria-labelledby="diagnostico-label"><g:fieldValue bean="${consultaInstance}" field="diagnostico"/></span>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.medicamento}">
+          				<li class="fieldcontain">
+          					<span id="medicamento-label" class="property-label"><g:message code="consulta.medicamento.label" default="Medicamento" /></span>
+
+          						<g:each in="${consultaInstance.medicamento}" var="m">
+          						<span class="property-value" aria-labelledby="medicamento-label"><g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+          						</g:each>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.motivo_consulta}">
+          				<li class="fieldcontain">
+          					<span id="motivo_consulta-label" class="property-label"><g:message code="consulta.motivo_consulta.label" default="Motivoconsulta" /></span>
+
+          						<span class="property-value" aria-labelledby="motivo_consulta-label"><g:fieldValue bean="${consultaInstance}" field="motivo_consulta"/></span>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.paciente}">
+          				<li class="fieldcontain">
+          					<span id="paciente-label" class="property-label"><g:message code="consulta.paciente.label" default="Paciente" /></span>
+
+          						<span class="property-value" aria-labelledby="paciente-label"><g:link controller="paciente" action="show" id="${consultaInstance?.paciente?.id}">${consultaInstance?.paciente?.encodeAsHTML()}</g:link></span>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.practicas}">
+          				<li class="fieldcontain">
+          					<span id="practicas-label" class="property-label"><g:message code="consulta.practicas.label" default="Practicas" /></span>
+
+          						<g:each in="${consultaInstance.practicas}" var="p">
+          						<span class="property-value" aria-labelledby="practicas-label"><g:link controller="practica_X_Consulta" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+          						</g:each>
+
+          				</li>
+          				</g:if>
+
+          				<g:if test="${consultaInstance?.tratamiento}">
+          				<li class="fieldcontain">
+          					<span id="tratamiento-label" class="property-label"><g:message code="consulta.tratamiento.label" default="Tratamiento" /></span>
+
+          						<span class="property-value" aria-labelledby="tratamiento-label"><g:fieldValue bean="${consultaInstance}" field="tratamiento"/></span>
+
+          				</li>
+          				</g:if>
+
+          			</ol>
+
+
+
+
+
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
