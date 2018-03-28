@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 class ConsultaController {
 
     ConsultaService consultaService
+    PacienteService pacienteService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,7 +20,7 @@ class ConsultaController {
     }
 
     def create() {
-        respond new Consulta(params)
+        respond new Consulta(params),pacienteService.get(id)
     }
 
     def save(Consulta consulta) {
