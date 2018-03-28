@@ -8,6 +8,7 @@ class ConsultaController {
     ConsultaService consultaService
     PacienteService pacienteService
 
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -20,7 +21,7 @@ class ConsultaController {
     }
 
     def create() {
-        respond new Consulta(params),pacienteService.get(id)
+        respond new Consulta(params), pacienteService.get(id)
     }
 
     def save(Consulta consulta) {
