@@ -20,8 +20,9 @@ class ConsultaController {
         respond consultaService.get(id)
     }
 
+
     def create() {
-        respond new Consulta(params), pacienteService.get(id)
+        respond  respond Book.get(params.id)
     }
 
     def save(Consulta consulta) {
@@ -98,4 +99,14 @@ class ConsultaController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def consultasxpaciente(Long id) {
+        if (params.id ) {
+            def consultaInstance = Consulta.findAllByPaciente_id(params.id)
+            if (consultaInstance){
+                render(view:"consultasxpaciente",model:[ consultaInstanceList:consultaInstance ])
+            }
+        }
+    }
+
 }
