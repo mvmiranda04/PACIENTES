@@ -106,7 +106,7 @@ class ConsultaController {
             def consultaList = paciente ? Consulta.findAllByPaciente(paciente) : []
 
             if (consultaList){
-                render(view:"index",model:[ consultaList:consultaList ])
+                render(view:"consultaxpaciente",model:[ consultaList:consultaList ])
             }else {
                     flash.message="No se encontro Consulta para el Paciente ingresado."
                     redirect(action:"index")

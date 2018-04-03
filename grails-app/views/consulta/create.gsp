@@ -36,17 +36,14 @@
                 		<g:message code="consulta.paciente.label" default="Paciente" />
                 		<span class="required-indicator">*</span>
                 	</label>
-                	<!--<g:select id="paciente" name="paciente.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.id}" class="many-to-one"/>-->
+                	<g:select id="paciente" name="paciente.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.id}" class="many-to-one"/>
                     <!--<g:select id="paciente" name="paciente.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.apellido}"/>-->
                     <g:textField name="paciente.id"  value="${PacienteInstance?.paciente?.apellido}"/>
 
 
                     <span id="paciente-label" class="property-label"><g:message code="consulta.paciente.label" default="Paciente" /></span>
 
-                    <!--<span class="property-value" aria-labelledby="paciente-label"><g:link controller="paciente" action="show" id="${consultaInstance?.paciente?.id}">${consultaInstance?.paciente?.encodeAsHTML()}</g:link></span>-->
-                    <span class="property-value" aria-labelledby="paciente-label"><g:link controller="paciente" action="show" id="${consultaInstance?.paciente?.id}">${pacienteInstance?.paciente.apellido+' '+pacienteInstance?.paciente.nombre}</g:link></span>
 
-                    <!--<g:textField name="paciente.id" value="${consultaInstance?.paciente?.apellido }"/>-->
 
 
                 </div>
