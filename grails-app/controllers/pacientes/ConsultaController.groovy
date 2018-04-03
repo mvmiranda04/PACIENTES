@@ -22,7 +22,7 @@ class ConsultaController {
 
 
     def create() {
-        respond  respond Book.get(params.id)
+        respond new Consulta(params)
     }
 
     def save(Consulta consulta) {
@@ -102,9 +102,14 @@ class ConsultaController {
 
     def consultasxpaciente(Long id) {
         if (params.id ) {
-            def consultaInstance = Consulta.findAllByPaciente_id(params.id)
-            if (consultaInstance){
-                render(view:"consultasxpaciente",model:[ consultaInstanceList:consultaInstance ])
+            def paciente = Paciente.findById(params.id)
+            def consultaList = paciente ? Consulta.findAllByPaciente(paciente) : []
+
+            if (consultaList){
+                render(view:"index",model:[ consultaList:consultaList ])
+            }else {
+                    flash.message="No se encontro Consulta para el Paciente ingresado."
+                    redirect(action:"index")
             }
         }
     }

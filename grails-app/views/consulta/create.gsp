@@ -48,6 +48,7 @@
 
                     <!--<g:textField name="paciente.id" value="${consultaInstance?.paciente?.apellido }"/>-->
 
+
                 </div>
 
                 <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'fecha_consulta', 'error')} required">
