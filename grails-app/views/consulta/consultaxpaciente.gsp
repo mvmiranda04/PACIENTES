@@ -1,3 +1,5 @@
+<%@ page import="pacientes.Paciente" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +21,10 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-						<table>
+                        <span class="property-label"><g:message code="consultaList.Paciente" default="Paciente" /></span>
+                        <g:field type="text" name="apellido" disabled value="${consultaList?.paciente?.apellido + consultaList?.paciente?.nombre}"/>
+
+    					<table>
 						<thead>
 								<tr>
 
@@ -31,7 +36,7 @@
 
 									<g:sortableColumn property="motivo_consulta" title="${message(code: 'consulta.motivo_consulta.label', default: 'Motivoconsulta')}" />
 
-									<th><g:message code="consulta.paciente.label" default="Paciente" /></th>
+									<!--<th><g:message code="consulta.paciente.label" default="Paciente" /></th>-->
 
 									<g:sortableColumn property="tratamiento" title="${message(code: 'consulta.tratamiento.label', default: 'Tratamiento')}" />
 
@@ -49,7 +54,7 @@
 
 									<td>${fieldValue(bean: consultaInstance, field: "motivo_consulta")}</td>
 
-									<td>${fieldValue(bean: consultaInstance, field: "paciente")}</td>
+									<!--<td>${fieldValue(bean: consultaInstance, field: "paciente")}</td>-->
 
 									<td>${fieldValue(bean: consultaInstance, field: "tratamiento")}</td>
 
