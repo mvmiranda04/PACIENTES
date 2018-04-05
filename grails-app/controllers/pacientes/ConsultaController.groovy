@@ -103,9 +103,9 @@ class ConsultaController {
     def consultasxpaciente(Long id) {
         if (params.id ) {
             def paciente = Paciente.findById(params.id)
-            def consultaList = paciente ? Consulta.findAllByPaciente(paciente) : []
+            def consultaList = paciente ? paciente.consultas : []
 
-            if (consultaList){
+            if (consultaList.size()>0){
                 render(view:"consultaxpaciente",model:[ consultaList:consultaList ])
             }else {
                     flash.message="No se encontro Consulta para el Paciente ingresado."

@@ -22,7 +22,8 @@
             </g:if>
 
                         <span class="property-label"><g:message code="consultaList.Paciente" default="Paciente" /></span>
-                        <g:field type="text" name="apellido" disabled value="${consultaList?.paciente?.apellido + consultaList?.paciente?.nombre}"/>
+                        ${consultaList[0].paciente?.apellido + " " + consultaList[0].paciente?.nombre}
+
 
     					<table>
 						<thead>
@@ -46,7 +47,9 @@
 							<g:each in="${consultaList}" status="i" var="consultaInstance">
 								<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-									<td><g:link action="show" id="${consultaInstance.id}">${fieldValue(bean: consultaInstance, field: "fecha_consulta")}</g:link></td>
+
+                                    <td><g:link action="show" id="${consultaInstance.id}"><g:formatDate format="yyyy-MM-dd" date="${consultaInstance?.fecha_consulta}" /></g:link></td>
+
 
 									<td>${fieldValue(bean: consultaInstance, field: "hora_consulta")}</td>
 
@@ -57,6 +60,24 @@
 									<!--<td>${fieldValue(bean: consultaInstance, field: "paciente")}</td>-->
 
 									<td>${fieldValue(bean: consultaInstance, field: "tratamiento")}</td>
+
+                                    <td><g:if test="${consultaInstance?.medicamento}">
+                    				<li class="fieldcontain">
+                    						<g:each in="${consultaInstance.medicamento}" var="m">
+                    						                  <g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link>
+                    						</g:each>
+                    				</li>
+                    				</g:if></td>
+                                    <!--<g:if test="${consultaInstance?.medicamento}">
+                    				<li class="fieldcontain">
+                    					<span id="medicamento-label" class="property-label"><g:message code="consulta.medicamento.label" default="Medicamento" /></span>
+
+                    						<g:each in="${consultaInstance.medicamento}" var="m">
+                    						<span class="property-value" aria-labelledby="medicamento-label"><g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+                    						</g:each>
+
+                    				</li>
+                                </g:if>-->
 
 								</tr>
 							</g:each>
