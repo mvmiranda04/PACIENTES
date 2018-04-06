@@ -1,4 +1,5 @@
 <%@ page import="pacientes.Paciente" %>
+<%@ page import="pacientes.Medicamento" %>
 
 <!DOCTYPE html>
 <html>
@@ -37,9 +38,9 @@
 
 									<g:sortableColumn property="motivo_consulta" title="${message(code: 'consulta.motivo_consulta.label', default: 'Motivoconsulta')}" />
 
-									<!--<th><g:message code="consulta.paciente.label" default="Paciente" /></th>-->
-
 									<g:sortableColumn property="tratamiento" title="${message(code: 'consulta.tratamiento.label', default: 'Tratamiento')}" />
+
+                                    <g:sortableColumn property="medicamento" title="${message(code: 'consulta.tratamiento.label', default: 'Medicamentos')}" />
 
 								</tr>
 							</thead>
@@ -57,27 +58,70 @@
 
 									<td>${fieldValue(bean: consultaInstance, field: "motivo_consulta")}</td>
 
-									<!--<td>${fieldValue(bean: consultaInstance, field: "paciente")}</td>-->
-
 									<td>${fieldValue(bean: consultaInstance, field: "tratamiento")}</td>
 
                                     <td><g:if test="${consultaInstance?.medicamento}">
-                    				<li class="fieldcontain">
+                    				<!--<li >-->
                     						<g:each in="${consultaInstance.medicamento}" var="m">
-                    						                  <g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link>
+                    						                  <!--<g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link>-->
+
+                                                <!-------------------------------------------------------------------- -->
+                                                        <div class="container">
+                                                          <!-- Trigger the modal with a button -->
+                                                          <button type="button" class="btn btn-default btn-lg" id="myBtn">Editar Medicamentos</button>
+
+                                                          <!-- Modal -->
+                                                          <div class="modal fade" id="myModal" role="dialog">
+                                                            <div class="modal-dialog">
+
+                                                              <!-- Modal content-->
+                                                              <div class="modal-content">
+                                                                <div class="modal-header" style="padding:35px 50px;">
+                                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                  <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                                                                </div>
+                                                                <div class="modal-body" style="padding:40px 50px;">
+                                                                  <form role="form">
+                                                                    <div class="form-group">
+                                                                        <g:if test="${m?.indicaciones}">
+                                                                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Indicaciones</label>
+                                                                            <input type="text" class="form-control" id="indicaciones-label" value="${m.indicaciones}"  placeholder="Indicaciones">
+                                                                        </g:if>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Medicamento</label>
+                                                                        <input type="text" class="form-control" id="medicamento-label" value="${m.medicamento.des_medicamento}"  placeholder="Medicamento">
+                                                                    </div>
+                                                                  <fieldset class="buttons">
+                                                      					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                                      					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                                      				</fieldset>
+
+
+                                                                  </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                                                </div>
+                                                              </div>
+
+                                                            </div>
+                                                          </div>
+                                                        </div>
+
+                                                        <script>
+                                                        $(document).ready(function(){
+                                                            $("#myBtn").click(function(){
+                                                                $("#myModal").modal();
+                                                            });
+                                                        });
+                                                        </script>
+
+                                                    <!-------------------------------------------------------------------- -->
+
                     						</g:each>
-                    				</li>
+                    				<!--</li>-->
                     				</g:if></td>
-                                    <!--<g:if test="${consultaInstance?.medicamento}">
-                    				<li class="fieldcontain">
-                    					<span id="medicamento-label" class="property-label"><g:message code="consulta.medicamento.label" default="Medicamento" /></span>
-
-                    						<g:each in="${consultaInstance.medicamento}" var="m">
-                    						<span class="property-value" aria-labelledby="medicamento-label"><g:link controller="medicamentos_X_Consulta" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-                    						</g:each>
-
-                    				</li>
-                                </g:if>-->
 
 								</tr>
 							</g:each>
@@ -87,5 +131,7 @@
                 <g:paginate total="${consultaCount ?: 0}" />
             </div>
         </div>
+
+
     </body>
 </html>
