@@ -22,8 +22,8 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-                        <span class="property-label"><g:message code="consultaList.Paciente" default="Paciente" /></span>
-                        ${consultaList[0].paciente?.apellido + " " + consultaList[0].paciente?.nombre}
+                        <div class="desplazado"><span class="property-label"><g:message code="consultaList.Paciente" default="Paciente" /></span>
+                        ${consultaList[0].paciente?.apellido + " " + consultaList[0].paciente?.nombre}</div>
 
 
     					<table>
@@ -61,7 +61,7 @@
                       <!-------------------------------------------------------------------- -->
                       <div class="container">
                       <!-- Trigger the modal with a button -->
-                      <button type="button" class="btn btn-default btn-lg" id="myBtn">Ver Medicamentos</button>
+                      <button type="button" class="btn btn-primary btn-xs" id="myBtn"  data-toggle="modal" data-target="#myModal">Ver Medicamentos</button>
 
                       <!-- Modal -->
                       <div class="modal fade" id="myModal" role="dialog">
@@ -83,14 +83,12 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <g:if test="${consultaInstance?.medicamento}">
                                       <g:each in="${consultaInstance.medicamento}" var="m">
                                         <tr>
                                             <td>${fieldValue(bean: m.medicamento, field: "des_medicamento")}</td>
                                             <td>${fieldValue(bean: m, field: "indicaciones")}</td>
                                         </tr>
                                       </g:each>
-                                    </g:if>
                                 </tbody>
                             </table>
                           </div>
