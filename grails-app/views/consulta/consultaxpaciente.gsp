@@ -88,7 +88,7 @@
                                             <td>${fieldValue(bean: m.medicamento, field: "des_medicamento")}</td>
                                             <td>${fieldValue(bean: m, field: "indicaciones")}</td>
                                         </tr>
-                                      </g:each>
+                                    </g:each>
                                 </tbody>
                             </table>
                           </div>
