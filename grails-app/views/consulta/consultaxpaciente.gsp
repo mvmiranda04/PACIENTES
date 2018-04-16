@@ -104,7 +104,7 @@
 
                     <script>
                         $(document).ready(function(){
-                            $("#myBtn").click(function(){
+                            $("myModal").click(function(){
                                 $("#myModal").modal();
                             });
                         });
@@ -115,6 +115,7 @@
 
 								</tr>
 							</g:each>
+
 							</tbody>
 						</table>
             <div class="pagination">
