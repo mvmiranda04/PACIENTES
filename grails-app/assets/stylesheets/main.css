@@ -572,3 +572,32 @@ img.grails-logo {
     height:340px;
     margin-top:-10px;
 }
+
+
+div.autocomplete {
+position:absolute;
+width:250px;
+background-color:#8cafea;
+margin:0px;
+padding:0px;
+overflow:hidden;
+border: 1px solid;
+}
+
+div.autocomplete ul {
+list-style-type:none;
+margin:0px;
+padding:0px;
+overflow:auto;
+}
+
+div.autocomplete ul li.selected { background-color: #294597; color: #ffffff}
+
+div.autocomplete ul li {
+list-style-type:none;
+display:block;
+margin:0 0 0 5;
+padding:2px;
+height:12px;
+cursor:pointer;
+}
