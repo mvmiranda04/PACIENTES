@@ -113,5 +113,16 @@ class ConsultaController {
             }
         }
     }
+    def createXpaciente(Long id) {
+        if (params.id ) {
+            def paciente = Paciente.findById(params.id)
+            if (paciente.size()>0){
+                render(view:"createXpaciente",model:[ paciente:paciente ])
+            }else {
+                    flash.message="No se encontro el Paciente."
+                    redirect(action:"index")
+            }
+        }
+    }
 
 }

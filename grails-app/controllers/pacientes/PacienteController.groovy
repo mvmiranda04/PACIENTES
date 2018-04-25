@@ -137,9 +137,9 @@ class PacienteController {
                   def list = Country.findAll("from Paciente as paciente where lower(paciente.nombre) like :nombre",  [nombre:input])
   		}
   		//render (list?.'city' as JSON)
-      render list.toString()
-  	}
-  }
+      //render list.toString()
+
+ 
 
 
 }
