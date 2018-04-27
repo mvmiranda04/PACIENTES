@@ -114,4 +114,12 @@ class ConsultaController {
         }
     }
 
+    def createNew(Long id) {
+        //respond new Consulta(params)
+        if (params.id ) {
+            def paciente = Paciente.findById(params.id)
+            def consultaList = paciente ? paciente.consultas : []
+        }
+    }
+
 }
