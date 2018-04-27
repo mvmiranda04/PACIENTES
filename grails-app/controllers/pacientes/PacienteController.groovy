@@ -103,5 +103,46 @@ class PacienteController {
         render(view:"list")
     }
 
+<<<<<<< HEAD
+=======
+    // autocomplete: start
+  	def ajaxAutoComplete = {
+
+  		 println "inside ajaxAutocomplete...." + params
+
+  //		println "..." + Country.list()
+          if(params.autocomplete_parameter)
+          {
+              def input = params.autocomplete_parameter + '%'
+
+              def list = Country.findAll("from Paciente as paciente where lower(paciente.nombre) like :nombre",  [nombre:input])
+
+  			println "input: " + input
+
+  			println "list: " + list
+              StringBuffer idList = new StringBuffer()
+
+              idList.append("<ul>")
+
+                  list?.each{c -> idList.append("<li>" + c.name+"</li>")}
+
+              idList.append("</ul>")
+
+
+              render idList.toString()
+          }
+  	}
+
+  	// autocomplete: end
+    def ajaxFindCity = {              def input = params.autocomplete_parameter + '%'
+
+                  def list = Country.findAll("from Paciente as paciente where lower(paciente.nombre) like :nombre",  [nombre:input])
+  		}
+  		//render (list?.'city' as JSON)
+      //render list.toString()
+
+ 
+
+>>>>>>> 5ee4962aac17be11ef2a40b3bbdcb0f6ea75b220
 
 }
