@@ -116,7 +116,7 @@ class ConsultaController {
     def createXpaciente(Long id) {
         if (params.id ) {
             def paciente = Paciente.findById(params.id)
-            if (paciente.size()>0){
+            if (paciente){
                 render(view:"createXpaciente",model:[ paciente:paciente ])
             }else {
                     flash.message="No se encontro el Paciente."
@@ -125,12 +125,29 @@ class ConsultaController {
         }
     }
 
-    def createNew(Long id) {
-        //respond new Consulta(params)
-        if (params.id ) {
-            def paciente = Paciente.findById(params.id)
-            def consultaList = paciente ? paciente.consultas : []
+    def saveXpaciente(Consulta consulta) {
+        if (consulta == null) {
+            notFound()
+            return
+        }
+
+        try {
+            consulta.diagnostico='doloooooooorrrr'
+println consulta.paciente.id
+            consultaService.save(consulta)
+        } catch (ValidationException e) {
+            respond consulta.errors, view:'create'
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'consulta.label', default: 'Consulta'), consulta.id])
+                redirect consulta
+            }
+            '*' { respond consulta, [status: CREATED] }
         }
     }
+
 
 }
