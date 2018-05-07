@@ -132,9 +132,8 @@ class ConsultaController {
         }
 
         try {
-            consulta.diagnostico='doloooooooorrrr'
-println consulta.paciente.id
             consultaService.save(consulta)
+
         } catch (ValidationException e) {
             respond consulta.errors, view:'create'
             return

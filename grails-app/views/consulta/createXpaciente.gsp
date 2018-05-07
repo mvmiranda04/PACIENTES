@@ -38,7 +38,7 @@
                     		<g:message code="consulta.paciente.label" default="Paciente" />
                     		<span class="required-indicator">*</span>
                     	</label>
-                        <g:textField name="paciente.id"  value="${paciente?.id}" disabled="true"/>
+                        <g:textField id="paciente" name="paciente.id" value="${paciente?.id}" disabled="true"/>
                     </div>
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'paciente', 'error')} required">
@@ -46,7 +46,7 @@
                     		<g:message code="consulta.paciente.label" default="Paciente" />
                     		<span class="required-indicator">*</span>
                     	</label>
-                    	<g:select id="paciente" name="paciente.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.id}" class="many-to-one"/>
+                    	<g:select id="pacienteeee" name="pacienteee.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.id}" class="many-to-one"/>
                     </div>
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'fecha_consulta', 'error')} required">
