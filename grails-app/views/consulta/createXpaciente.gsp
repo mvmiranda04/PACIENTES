@@ -29,42 +29,30 @@
 			<g:form url="[resource:consultaInstance, action:'saveXpaciente']" >
 				<fieldset class="form">
 
-                    <div class="desplazado"><span class="property-label"><g:message code="consultaList.Paciente" default="Paciente" /></span>
-                    ${paciente?.apellido + " " + paciente?.nombre}</div>
+					<g:hiddenField id="paciente" name="paciente.id" value="${paciente?.id}" />
 
-
-                    <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'paciente', 'error')} required">
-                    	<label for="paciente">
-                    		<g:message code="consulta.paciente.label" default="Paciente" />
+                    <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'hora_consulta', 'error')} required">
+                    	<label for="apellido">
+                    		<g:message code="consulta.hora_consulta.label" default="Apellido y Nombre" />
                     		<span class="required-indicator">*</span>
                     	</label>
-                        <g:textField id="paciente" name="paciente.id" value="${paciente?.id}" disabled="true"/>
-                    </div>
-
-                    <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'paciente', 'error')} required">
-                    	<label for="paciente">
-                    		<g:message code="consulta.paciente.label" default="Paciente" />
-                    		<span class="required-indicator">*</span>
-                    	</label>
-                    	<g:select id="pacienteeee" name="pacienteee.id" from="${pacientes.Paciente.list()}" optionKey="id" required="" value="${consultaInstance?.paciente?.id}" class="many-to-one"/>
+                    	${paciente?.apellido + " " + paciente?.nombre}
                     </div>
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'fecha_consulta', 'error')} required">
                     	<label for="fecha_consulta">
-                    		<g:message code="consulta.fecha_consulta.label" default="Fechaconsulta" />
+                    		<g:message code="consulta.fecha_consulta.label" default="Fecha Consulta" />
                     		<span class="required-indicator">*</span>
                     	</label>
                     	<g:datePicker name="fecha_consulta" precision="day"  value="${consultaInstance?.fecha_consulta}"  />
-
                     </div>
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'hora_consulta', 'error')} required">
                     	<label for="hora_consulta">
-                    		<g:message code="consulta.hora_consulta.label" default="Horaconsulta" />
+                    		<g:message code="consulta.hora_consulta.label" default="Hora Consulta" />
                     		<span class="required-indicator">*</span>
                     	</label>
                     	<g:textField name="hora_consulta" required="" value="${consultaInstance?.hora_consulta}"/>
-
                     </div>
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'diagnostico', 'error')} required">
@@ -78,7 +66,7 @@
 
                     <div class="fieldcontain ${hasErrors(bean: consultaInstance, field: 'motivo_consulta', 'error')} required">
                     	<label for="motivo_consulta">
-                    		<g:message code="consulta.motivo_consulta.label" default="Motivoconsulta" />
+                    		<g:message code="consulta.motivo_consulta.label" default="Motivo Consulta" />
                     		<span class="required-indicator">*</span>
                     	</label>
                     	<g:textField name="motivo_consulta" required="" value="${consultaInstance?.motivo_consulta}"/>
